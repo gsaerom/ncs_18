@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <heda>
+        <meta charset="utf-8"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <title>ncs_18</title>
+        <style>
+            *{
+                margin:0;
+                padding:0;
+            }
+        </style>
+    </heda>
+    <body>
+        <div class="inputArea">
+            <div id="student_1">
+                <p class="title">학생 1</p>
+                <p>국어</p>
+                <input id="stu1Ko" type="number" placeholder="입력하세요">
+                <p>수학</p>
+                <input id="stu1Ma" type="number" placeholder="입력하세요">
+                <p>영어</p>
+                <input id="stu1En" type="number" placeholder="입력하세요">
+                <p>학생 1 총점</p>
+                <input id="stu1_sum" readonly>
+                <p>학생 1 평균</p>
+                <input id="stu1_avg" readonly>
+            </div>
+
+            <div id="student_2">
+                <p class="title">학생 2</p>
+                <p>국어</p>
+                <input id="stu2Ko" type="number" placeholder="입력하세요">
+                <p>수학</p>
+                <input id="stu2Ma" type="number" placeholder="입력하세요">
+                <p>영어</p>
+                <input id="stu2En" type="number" placeholder="입력하세요">
+                <p>학생 2 총점</p>
+                <input id="stu2_sum" readonly>
+                <p>학생 2 평균</p>
+                <input id="stu2_avg" readonly>
+            </div>
+
+            <div id="student_3">
+                <p class="title">학생 3</p>
+                <p>국어</p>
+                <input id="stu3Ko" type="number" placeholder="입력하세요">
+                <p>수학</p>
+                <input id="stu3Ma" type="number" placeholder="입력하세요">
+                <p>영어</p>
+                <input id="stu3En" type="number" placeholder="입력하세요">
+                <p>학생 3 총점</p>
+                <input id="stu3_sum" readonly>
+                <p>학생 3 평균</p>
+                <input id="stu3_avg" readonly>
+            </div>
+            <button id="calcBtn">계산하기</button>
+        </div>
+
+        <style>
+            .inputArea {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                border: 1px solid gray;
+                text-align: center;
+                width: 700px;
+                height: 380px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .title {
+                background: yellow;
+            }
+
+            input {
+                text-align: center;
+                width: 160px;
+                height: 30px;
+                margin-bottom: 10px;
+            }
+
+            button {
+                cursor: pointer;
+                width: 80px;
+                height: 40px;
+            }
+        </style>
+        <script>
+            class ScoreSumAvg {
+                constructor(){}
+
+                sum() {
+                    let i=0;
+                    while(i<3) {
+                        i++;
+                        $(`#stu${i}_sum`).val( Number($(`#stu${i}Ko`).val()) + Number($(`#stu${i}Ma`).val()) + Number($(`#stu${i}En`).val()) ); 
+                    };
+                };
+
+                avg() {
+                    let i=0;
+                    while(i<3) {
+                        i++;
+                        $(`#stu${i}_avg`).val( (Number($(`#stu${i}Ko`).val()) + Number($(`#stu${i}Ma`).val()) + Number($(`#stu${i}En`).val()))/3 ); 
+                    };
+                };
+            };
+
+            const scoreSumAvg = new ScoreSumAvg();
+            $(`#calcBtn`).on(`click`, () => {
+                scoreSumAvg.sum();
+                scoreSumAvg.avg();
+            });
+           
+        </script>
+    </body>
+</html>
